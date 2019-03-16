@@ -5,11 +5,12 @@ var firstCrystal = 0;
 var secondCrystal = 0;
 var thirdCrystal = 0;
 var fourthCrystal = 0;
+var targetNumber = 0;
 
 $(document).ready(function() {
     
     function reset() {
-        var targetNumber = Math.floor(Math.random() * 100 + 19);
+        targetNumber = Math.floor(Math.random() * 100 + 19);
         userScore = 0;
         firstCrystal = 1 + Math.floor(Math.random() * 12);
         secondCrystal = 1 + Math.floor(Math.random() * 12);
@@ -52,6 +53,76 @@ $(document).ready(function() {
             console.log("After else crystal " + firstCrystal);
         }
     });
+
+    $("#secondCrystal").click(function() {
+
+        userScore = (secondCrystal + userScore);
+        $("#userScore").text("Your current score: " + userScore);
+        console.log("Before if/else score " + userScore);
+        console.log("Before if/else crystal " +firstCrystal);
+
+        console.log(userScore, 'userScore');
+        console.log(targetNumber, 'targetNumber')
+        if (userScore == targetNumber) {
+            wins++;
+            reset();
+            console.log("After if score " + userScore);
+            console.log("After if crystal " +firstCrystal);
+            
+        } else if (userScore > targetNumber) {
+            losses++
+            reset();
+            console.log("After else score " + userScore);
+            console.log("After else crystal " + firstCrystal);
+        }
+    });
+
+    $("#thirdCrystal").click(function() {
+
+        userScore = (thirdCrystal + userScore);
+        $("#userScore").text("Your current score: " + userScore);
+        console.log("Before if/else score " + userScore);
+        console.log("Before if/else crystal " +firstCrystal);
+
+        console.log(userScore, 'userScore');
+        console.log(targetNumber, 'targetNumber')
+        if (userScore == targetNumber) {
+            wins++;
+            reset();
+            console.log("After if score " + userScore);
+            console.log("After if crystal " +firstCrystal);
+            
+        } else if (userScore > targetNumber) {
+            losses++
+            reset();
+            console.log("After else score " + userScore);
+            console.log("After else crystal " + firstCrystal);
+        }
+    });
+
+    $("#fourthCrystal").click(function() {
+
+        userScore = (fourthCrystal + userScore);
+        $("#userScore").text("Your current score: " + userScore);
+        console.log("Before if/else score " + userScore);
+        console.log("Before if/else crystal " +firstCrystal);
+
+        console.log(userScore, 'userScore');
+        console.log(targetNumber, 'targetNumber')
+        if (userScore == targetNumber) {
+            wins++;
+            reset();
+            console.log("After if score " + userScore);
+            console.log("After if crystal " +firstCrystal);
+            
+        } else if (userScore > targetNumber) {
+            losses++
+            reset();
+            console.log("After else score " + userScore);
+            console.log("After else crystal " + firstCrystal);
+        }
+    });
+
 });
 
 //values don't seem to be fully resetting. 
