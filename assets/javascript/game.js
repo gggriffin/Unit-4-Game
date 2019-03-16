@@ -1,42 +1,68 @@
+var wins = 0;
+var losses = 0;
+var userScore = 0;
 var firstCrystal = 0;
 var secondCrystal = 0;
 var thirdCrystal = 0;
 var fourthCrystal = 0;
-var targetNumber = Math.floor(Math.random() * 100 + 19);
-var userScore = 0;
-var wins = 0;
-var losses = 0;
 
+$(document).ready(function() {
+    
+    function reset() {
+        var targetNumber = Math.floor(Math.random() * 100 + 19);
+        userScore = 0;
+        firstCrystal = 1 + Math.floor(Math.random() * 12);
+        secondCrystal = 1 + Math.floor(Math.random() * 12);
+        thirdCrystal = 1 + Math.floor(Math.random() * 12);
+        fourthCrystal = 1 + Math.floor(Math.random() * 12);
 
+        console.log(targetNumber, 'target number upon reset');
+        $("#targetNumber").text("Target Number: " + targetNumber);
+        console.log(targetNumber, 'target number after changing DOM');
+        $("#userScore").text("Your current score: " + userScore);
+        $("#wins").text("Wins: " + wins);
+        $("#losses").text("Losses: " + losses);
 
-onload = function reset() {
-    firstCrystal = 1 + Math.floor(Math.random() * 12);
-    secondCrystal = 1 + Math.floor(Math.random() * 12);
-    thirdCrystal = 1 + Math.floor(Math.random() * 12);
-    fourthCrystal = 1 + Math.floor(Math.random() * 12);
-    userScore = 0;
+        console.log("1st Crystal: " + firstCrystal);
+        console.log("2nd Crystal: " + secondCrystal);
+        console.log("3rd Crystal: " + thirdCrystal);
+        console.log("4th Crystal: " + fourthCrystal);
+    }
+    reset();
+    
+    $("#firstCrystal").click(function() {
 
-    $("#targetNumber").text("Target Number: " + targetNumber);
-    $("#userScore").text("Your current score: " + userScore);
-    $("#wins").text("Wins: " + wins);
-    $("#losses").text("Losses: " + losses);
+        userScore = (firstCrystal + userScore);
+        $("#userScore").text("Your current score: " + userScore);
+        console.log("Before if/else score " + userScore);
+        console.log("Before if/else crystal " +firstCrystal);
 
-    console.log("1st Crystal: " + firstCrystal);
-    console.log("2nd Crystal: " + secondCrystal);
-    console.log("3rd Crystal: " + thirdCrystal);
-    console.log("4th Crystal: " + fourthCrystal);
+        console.log(userScore, 'userScore');
+        console.log(targetNumber, 'targetNumber')
+        if (userScore == targetNumber) {
+            wins++;
+            reset();
+            console.log("After if score " + userScore);
+            console.log("After if crystal " +firstCrystal);
+            
+        } else if (userScore > targetNumber) {
+            losses++
+            reset();
+            console.log("After else score " + userScore);
+            console.log("After else crystal " + firstCrystal);
+        }
+    });
+});
 
-    //return (firstCrystal); <-- Isn't working. How to keep crystal value after load function?
-}
-
-console.log("After Function 1st Crystal: " + firstCrystal); //Tests Crystal value after function - currently equals 0
-
+//values don't seem to be fully resetting. 
+//userScore is not resetting on reset. The if and the else
+//statements both run on every click after the first userScore == or is > target score
 
 //To do:
-//1. Crystal button press adds Crystal value to userScore
+//1. Crystal button press adds Crystal value to userScore, update userScore display
 
-//2. if userScore == targetNumber, wins++, run reset()
-//3. else if userScore > targetNumber, losses++, run reset()
+//2a. if userScore == targetNumber, wins++, run reset()
+//2b. else if userScore > targetNumber, losses++, run reset()
 
 
 
