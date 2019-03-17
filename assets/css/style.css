@@ -16,3 +16,20 @@ body, html {
     background-size: cover;
 
 }
+
+@media only screen and (max-width: 980px) {
+
+}
+@media only screen and (max-width: 768px) {
+
+}    
+@media only screen and (max-width: 640px) {
+    #gem {
+        height: 2em;
+        width: 2em;
+    }
+    #title {
+        height:3em;
+        width: 3em;
+    }
+}
